@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica Módulo 4 - Fraccionarios y Decimales</title>
+            <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.1);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        h1 {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        .subtitle {
+            color: #64748b;
+            font-size: 1.15em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .objectives {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 25px;
+            margin-bottom: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.08);
+        }
+        
+        .objectives h2 {
+            color: #3b82f6;
+            margin-bottom: 18px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        
+        .objectives ul {
+            list-style-type: none;
+        }
+        
+        .objectives li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: #1e293b;
+        }
+        
+        .objectives li:before {
+            content: "✓";
+            color: #3b82f6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        
+        .module-explanation {
+            background: linear-gradient(135deg, #fef3c7 0%, rgba(254, 243, 199, 0.5) 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 25px;
+            margin-bottom: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.08);
+        }
+        
+        .module-explanation h2 {
+            color: #f59e0b;
+            margin-bottom: 18px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        
+        .module-explanation p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #1e293b;
+        }
+        
+        .exercise {
+            margin-bottom: 40px;
+            padding: 30px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            background: linear-gradient(to bottom, #ffffff 0%, #fafbfc 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+        
+        .exercise:hover {
+            border-color: #a5b4fc;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.12);
+            transform: translateY(-2px);
+        }
+        
+        .exercise h3 {
+            color: #6366f1;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            font-weight: 600;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #a5b4fc;
+        }
+        
+        .context, .data, .solution {
+            margin-bottom: 20px;
+            padding: 18px;
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            border-left: 3px solid #10b981;
+        }
+        
+        .context strong, .data strong, .solution strong {
+            color: #10b981;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        
+        .questions {
+            margin-top: 20px;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+            padding: 18px;
+            background-color: #fafbfc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .question p {
+            margin-bottom: 12px;
+            font-weight: 500;
+            color: #1e293b;
+        }
+        
+        .answer-input {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 1.05em;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background-color: #ffffff;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+        
+        .answer-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+            background-color: #ffffff;
+        }
+        
+        .button {
+            padding: 14px 32px;
+            font-size: 1.05em;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+        
+        .btn-reset {
+            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+            color: white;
+        }
+        
+        .btn-reset:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(100, 116, 139, 0.3);
+        }
+        
+        .button-container {
+            text-align: center;
+            margin: 35px 0;
+        }
+        
+        .results {
+            background: linear-gradient(135deg, #d1fae5 0%, rgba(209, 250, 229, 0.5) 100%);
+            border-left: 4px solid #10b981;
+            padding: 30px;
+            margin-top: 35px;
+            border-radius: 12px;
+            display: none;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1);
+        }
+        
+        .score {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .score-pass {
+            color: #10b981;
+        }
+        
+        .score-fail {
+            color: #ef4444;
+        }
+        
+        .feedback {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 1.15em;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 2px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.95em;
+        }
+        
+        /* Estilos para MathJax/LaTeX */
+        .MathJax, .MathJax_Display {
+            font-size: 1.1em !important;
+        }
+        
+        mjx-container {
+            margin: 8px 0 !important;
+        }
+        
+        mjx-container[jax="CHTML"][display="true"] {
+            margin: 1em 0 !important;
+        }
+        
+        .math-inline {
+            color: #6366f1;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .button {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+    
+    <!-- MathJax para renderizado LaTeX profesional -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\(', '\)']],
+                displayMath: [['$$', '$$'], ['\[', '\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                packages: {'[+]': ['ams', 'newcommand', 'configmacros']}
+            },
+            svg: {
+                fontCache: 'global',
+                scale: 1.1
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Tecnología en Producción Pecuaria Sostenible</h1>
+            <h2>Práctica Módulo 4 - Fraccionarios y Decimales</h2>
+            <p>Aplicaciones en Sistemas Pecuarios</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="objectives">
+            <h3>Objetivos de Aprendizaje</h3>
+            <ul>
+                <li>Dominar operaciones con números fraccionarios en contextos agropecuarios</li>
+                <li>Aplicar números decimales en cálculos de producción pecuaria</li>
+                <li>Convertir entre fracciones, decimales y porcentajes</li>
+                <li>Resolver problemas prácticos de formulación de dietas y mezclas</li>
+            </ul>
+        </div>
+
+        <div class="explanation">
+            <h3>Explicación del Módulo</h3>
+            <p>Este módulo desarrolla competencias esenciales para trabajar con fraccionarios y decimales en el contexto de la producción pecuaria sostenible. Los números fraccionarios representan partes de un todo y son fundamentales para realizar distribuciones proporcionales de recursos como alimentos, medicamentos, espacios y presupuestos. Cada fracción tiene un equivalente decimal que facilita cálculos y comparaciones precisas.</p>
+            <p>En la práctica pecuaria, es común trabajar con fracciones al calcular dosis de medicamentos por kilogramo de peso vivo, proporciones de ingredientes en dietas balanceadas, tasas de mortalidad y morbilidad, o distribuciones de áreas de pastoreo. El módulo aborda las operaciones fundamentales con fraccionarios (suma, resta, multiplicación y división), la conversión entre fracciones y decimales, y la simplificación de expresiones fraccionarias.</p>
+            <p>Se incluye la explicación detallada de cómo operar con fraccionarios homogéneos y heterogéneos, el manejo de decimales en operaciones aritméticas, y el redondeo apropiado según el contexto. Los estudiantes aplicarán estos conceptos en ejercicios contextualizados que simulan situaciones reales de planificación, análisis, evaluación y monitoreo de sistemas pecuarios.</p>
+        </div>
+
+        <div class="theory">
+            <h2>Fundamentos Teóricos</h2>
+            
+            <h3>Números Fraccionarios</h3>
+            <p>Una fracción representa una parte de un todo:</p>
+            <p class="math">$\frac{numerador}{denominador} = \frac{a}{b}, \quad b \neq 0$</p>
+            
+            <p><strong>Tipos de fracciones:</strong></p>
+            <ul>
+                <li><strong>Propia:</strong> $\frac{3}{4}$ (numerador &lt; denominador)</li>
+                <li><strong>Impropia:</strong> $\frac{7}{4}$ (numerador &gt; denominador)</li>
+                <li><strong>Mixta:</strong> $1\frac{3}{4}$ (número entero + fracción propia)</li>
+            </ul>
+
+            <h3>Operaciones con Fracciones</h3>
+            <p><strong>Suma y resta (mismo denominador):</strong></p>
+            <p class="math">$\frac{a}{c} + \frac{b}{c} = \frac{a+b}{c}$</p>
+            
+            <p><strong>Suma y resta (diferente denominador):</strong></p>
+            <p class="math">$\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}$</p>
+            
+            <p><strong>Multiplicación:</strong></p>
+            <p class="math">$\frac{a}{b} \times \frac{c}{d} = \frac{a \times c}{b \times d}$</p>
+            
+            <p><strong>División:</strong></p>
+            <p class="math">$\frac{a}{b} \div \frac{c}{d} = \frac{a}{b} \times \frac{d}{c} = \frac{ad}{bc}$</p>
+
+            <h3>Números Decimales</h3>
+            <p>Los decimales son otra forma de expresar fracciones:</p>
+            <ul>
+                <li>$\frac{1}{2} = 0.5$</li>
+                <li>$\frac{1}{4} = 0.25$</li>
+                <li>$\frac{3}{4} = 0.75$</li>
+            </ul>
+        </div>
+
+        <div class="exercise">
+            <h3>Ejercicio 1: Formulación de Dieta Básica</h3>
+            <p><strong>Problema:</strong> Una dieta para vacas lecheras debe contener:</p>
+            <ul>
+                <li>Maíz: $\frac{2}{5}$ del total</li>
+                <li>Soya: $\frac{1}{4}$ del total</li>
+                <li>Minerales: $\frac{1}{10}$ del total</li>
+                <li>Otros: el resto</li>
+            </ul>
+            <p>Si se preparan 200 kg de dieta, calcule las cantidades de cada ingrediente.</p>
+            
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="e1-maiz">Cantidad de Maíz (kg):</label>
+                    <input type="text" id="e1-maiz" placeholder="Ej: 80">
+                </div>
+                <div class="input-group">
+                    <label for="e1-soya">Cantidad de Soya (kg):</label>
+                    <input type="text" id="e1-soya" placeholder="Ej: 50">
+                </div>
+                <div class="input-group">
+                    <label for="e1-minerales">Cantidad de Minerales (kg):</label>
+                    <input type="text" id="e1-minerales" placeholder="Ej: 20">
+                </div>
+                <div class="input-group">
+                    <label for="e1-otros">Cantidad de Otros (kg):</label>
+                    <input type="text" id="e1-otros" placeholder="Ej: 50">
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-e1"></div>
+        </div>
+
+        <div class="exercise">
+            <h3>Ejercicio 2: División de Potrero</h3>
+            <p><strong>Problema:</strong> Un potrero de $12\frac{3}{4}$ hectáreas se divide así:</p>
+            <ul>
+                <li>$\frac{1}{3}$ para pastoreo rotacional</li>
+                <li>$\frac{2}{5}$ para banco de proteína</li>
+                <li>El resto para heno</li>
+            </ul>
+            <p>Calcule el área de cada sección.</p>
+            
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="e2-pastoreo">Área de Pastoreo (ha):</label>
+                    <input type="text" id="e2-pastoreo" placeholder="Ej: 4.25">
+                </div>
+                <div class="input-group">
+                    <label for="e2-banco">Área de Banco de Proteína (ha):</label>
+                    <input type="text" id="e2-banco" placeholder="Ej: 5.1">
+                </div>
+                <div class="input-group">
+                    <label for="e2-heno">Área de Heno (ha):</label>
+                    <input type="text" id="e2-heno" placeholder="Ej: 3.4">
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-e2"></div>
+        </div>
+
+        <div class="exercise">
+            <h3>Ejercicio 3: Conversión Alimenticia con Decimales</h3>
+            <p><strong>Problema:</strong> Un lote de pollos consume 156.8 kg de alimento y gana 89.6 kg de peso. Calcule el índice de conversión alimenticia (ICA).</p>
+            
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="e3-ica">Índice de Conversión Alimenticia:</label>
+                    <input type="text" id="e3-ica" placeholder="Ej: 1.75">
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-e3"></div>
+        </div>
+
+        <div class="exercise">
+            <h3>Ejercicio 4: Composición Nutricional</h3>
+            <p><strong>Problema:</strong> Un suplemento mineral debe tener:</p>
+            <ul>
+                <li>Calcio: $\frac{3}{20}$ ($15\%$)</li>
+                <li>Fósforo: $\frac{2}{25}$ ($8\%$)</li>
+                <li>Magnesio: $\frac{3}{100}$ ($3\%$)</li>
+                <li>Otros minerales: el resto</li>
+            </ul>
+            
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="e4-calcio">Cantidad de Calcio (kg) para 500 kg:</label>
+                    <input type="text" id="e4-calcio" placeholder="Ej: 75">
+                </div>
+                <div class="input-group">
+                    <label for="e4-fosforo">Cantidad de Fósforo (kg) para 500 kg:</label>
+                    <input type="text" id="e4-fosforo" placeholder="Ej: 40">
+                </div>
+                <div class="input-group">
+                    <label for="e4-magnesio">Cantidad de Magnesio (kg) para 500 kg:</label>
+                    <input type="text" id="e4-magnesio" placeholder="Ej: 15">
+                </div>
+                <div class="input-group">
+                    <label for="e4-otros">Cantidad de Otros Minerales (kg) para 500 kg:</label>
+                    <input type="text" id="e4-otros" placeholder="Ej: 370">
+                </div>
+                <div class="input-group">
+                    <label for="e4-decimal-calcio">Calcio como decimal:</label>
+                    <input type="text" id="e4-decimal-calcio" placeholder="Ej: 0.15">
+                </div>
+                <div class="input-group">
+                    <label for="e4-decimal-fosforo">Fósforo como decimal:</label>
+                    <input type="text" id="e4-decimal-fosforo" placeholder="Ej: 0.08">
+                </div>
+                <div class="input-group">
+                    <label for="e4-decimal-magnesio">Magnesio como decimal:</label>
+                    <input type="text" id="e4-decimal-magnesio" placeholder="Ej: 0.03">
+                </div>
+                <div class="input-group">
+                    <label for="e4-suma-fracciones">Suma de fracciones (debe ser 1):</label>
+                    <input type="text" id="e4-suma-fracciones" placeholder="Ej: 1">
+                </div>
+                <div class="input-group">
+                    <label for="e4-costo-total">Costo total ($):</label>
+                    <input type="text" id="e4-costo-total" placeholder="Ej: 1,825,000">
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-e4"></div>
+        </div>
+
+        <div class="exercise">
+            <h3>Ejercicio 5: Reparto de Herencia Ganadera</h3>
+            <p><strong>Problema:</strong> Una finca con 240 cabezas de ganado se reparte entre 3 hermanos:</p>
+            <ul>
+                <li>El mayor recibe $\frac{2}{5}$ del total</li>
+                <li>El mediano recibe $\frac{1}{3}$ del total</li>
+                <li>El menor recibe el resto</li>
+            </ul>
+            
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="e5-mayor">Cabezas para el mayor:</label>
+                    <input type="text" id="e5-mayor" placeholder="Ej: 96">
+                </div>
+                <div class="input-group">
+                    <label for="e5-mediano">Cabezas para el mediano:</label>
+                    <input type="text" id="e5-mediano" placeholder="Ej: 80">
+                </div>
+                <div class="input-group">
+                    <label for="e5-menor">Cabezas para el menor:</label>
+                    <input type="text" id="e5-menor" placeholder="Ej: 64">
+                </div>
+                <div class="input-group">
+                    <label for="e5-fraccion-menor">Fracción para el menor:</label>
+                    <input type="text" id="e5-fraccion-menor" placeholder="Ej: $\frac{4}{15}$">
+                </div>
+                <div class="input-group">
+                    <label for="e5-valor-mayor">Valor de la parte del mayor ($):</label>
+                    <input type="text" id="e5-valor-mayor" placeholder="Ej: 273,600,000">
+                </div>
+                <div class="input-group">
+                    <label for="e5-valor-mediano">Valor de la parte del mediano ($):</label>
+                    <input type="text" id="e5-valor-mediano" placeholder="Ej: 228,000,000">
+                </div>
+                <div class="input-group">
+                    <label for="e5-valor-menor">Valor de la parte del menor ($):</label>
+                    <input type="text" id="e5-valor-menor" placeholder="Ej: 182,400,000">
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-e5"></div>
+        </div>
+
+        <div class="exercise">
+            <h3>Ejercicio 6: Mezcla de Concentrados</h3>
+            <p><strong>Problema:</strong> Se mezclan tres tipos de concentrado:</p>
+            <ul>
+                <li>Tipo A: 45.75 kg</li>
+                <li>Tipo B: 32.5 kg</li>
+                <li>Tipo C: 21.75 kg</li>
+            </ul>
+            
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="e6-total">Peso total de la mezcla (kg):</label>
+                    <input type="text" id="e6-total" placeholder="Ej: 100">
+                </div>
+                <div class="input-group">
+                    <label for="e6-proporcion-a">Proporción de Tipo A (fracción):</label>
+                    <input type="text" id="e6-proporcion-a" placeholder="Ej: $\frac{183}{400}$">
+                </div>
+                <div class="input-group">
+                    <label for="e6-proporcion-b">Proporción de Tipo B (fracción):</label>
+                    <input type="text" id="e6-proporcion-b" placeholder="Ej: $\frac{13}{40}$">
+                </div>
+                <div class="input-group">
+                    <label for="e6-proporcion-c">Proporción de Tipo C (fracción):</label>
+                    <input type="text" id="e6-proporcion-c" placeholder="Ej: $\frac{87}{400}$">
+                </div>
+                <div class="input-group">
+                    <label for="e6-porcentaje-a">Porcentaje de Tipo A (%):</label>
+                    <input type="text" id="e6-porcentaje-a" placeholder="Ej: 45.75">
+                </div>
+                <div class="input-group">
+                    <label for="e6-porcentaje-b">Porcentaje de Tipo B (%):</label>
+                    <input type="text" id="e6-porcentaje-b" placeholder="Ej: 32.5">
+                </div>
+                <div class="input-group">
+                    <label for="e6-porcentaje-c">Porcentaje de Tipo C (%):</label>
+                    <input type="text" id="e6-porcentaje-c" placeholder="Ej: 21.75">
+                </div>
+                <div class="input-group">
+                    <label for="e6-a-500">Tipo A para 500 kg (kg):</label>
+                    <input type="text" id="e6-a-500" placeholder="Ej: 228.75">
+                </div>
+                <div class="input-group">
+                    <label for="e6-b-500">Tipo B para 500 kg (kg):</label>
+                    <input type="text" id="e6-b-500" placeholder="Ej: 162.5">
+                </div>
+                <div class="input-group">
+                    <label for="e6-c-500">Tipo C para 500 kg (kg):</label>
+                    <input type="text" id="e6-c-500" placeholder="Ej: 108.75">
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-e6"></div>
+        </div>
+
+        <div class="exercise">
+            <h3>Ejercicio 7: Producción Lechera con Decimales</h3>
+            <p><strong>Problema:</strong> Una vaca produce en promedio 18.75 litros de leche al día. En una semana:</p>
+            <ul>
+                <li>Lunes: 19.2 L</li>
+                <li>Martes: 18.5 L</li>
+                <li>Miércoles: 18.9 L</li>
+                <li>Jueves: 17.8 L</li>
+                <li>Viernes: 19.5 L</li>
+                <li>Sábado: 18.3 L</li>
+                <li>Domingo: 18.6 L</li>
+            </ul>
+            
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="e7-total">Producción total semanal (L):</label>
+                    <input type="text" id="e7-total" placeholder="Ej: 130.8">
+                </div>
+                <div class="input-group">
+                    <label for="e7-promedio">Promedio diario real (L):</label>
+                    <input type="text" id="e7-promedio" placeholder="Ej: 18.69">
+                </div>
+                <div class="input-group">
+                    <label for="e7-diferencia">Diferencia con promedio esperado (L):</label>
+                    <input type="text" id="e7-diferencia" placeholder="Ej: -0.06">
+                </div>
+                <div class="input-group">
+                    <label for="e7-ingreso">Ingreso semanal ($):</label>
+                    <input type="text" id="e7-ingreso" placeholder="Ej: 176,571.40">
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-e7"></div>
+        </div>
+
+        <div class="exercise">
+            <h3>Ejercicio 8: Adición y Sustracción de Fracciones</h3>
+            <p><strong>Problema:</strong> Un tanque de agua para bebederos tiene $\frac{5}{6}$ de su capacidad. Durante el día:</p>
+            <ul>
+                <li>Se consume $\frac{2}{3}$ de lo que había</li>
+                <li>Se rellena $\frac{1}{2}$ de la capacidad total</li>
+                <li>Se vuelve a consumir $\frac{1}{4}$ de la capacidad total</li>
+            </ul>
+            
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="e8-queda">Fracción que queda al final:</label>
+                    <input type="text" id="e8-queda" placeholder="Ej: $\frac{1}{4}$">
+                </div>
+                <div class="input-group">
+                    <label for="e8-litros">Litros que quedan (capacidad 1200L):</label>
+                    <input type="text" id="e8-litros" placeholder="Ej: 300">
+                </div>
+                <div class="input-group">
+                    <label for="e8-porcentaje">Porcentaje del tanque:</label>
+                    <input type="text" id="e8-porcentaje" placeholder="Ej: $25\%$">
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-e8"></div>
+        </div>
+
+        <div class="exercise">
+            <h3>Ejercicio 9: Multiplicación y División de Fracciones</h3>
+            <p><strong>Problema:</strong> Una receta de sal mineralizada requiere $\frac{3}{4}$ de kg de sal por cada 50 kg de mezcla.</p>
+            
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="e9-sal-2-3">Sal para $\frac{2}{3}$ de la receta (kg):</label>
+                    <input type="text" id="e9-sal-2-3" placeholder="Ej: 0.5">
+                </div>
+                <div class="input-group">
+                    <label for="e9-mezcla-1-2">Mezcla para $\frac{1}{2}$ kg de sal (kg):</label>
+                    <input type="text" id="e9-mezcla-1-2" placeholder="Ej: 33.33">
+                </div>
+                <div class="input-group">
+                    <label for="e9-recetas-4-5">Recetas completas con $4\frac{1}{2}$ kg de sal:</label>
+                    <input type="text" id="e9-recetas-4-5" placeholder="Ej: 6">
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-e9"></div>
+        </div>
+
+        <div class="exercise">
+            <h3>Ejercicio 10: Rendimiento en Canal</h3>
+            <p><strong>Problema:</strong> El rendimiento en canal se calcula como:</p>
+            <p class="math">$\text{Rendimiento} = \frac{\text{Peso en canal}}{\text{Peso vivo}} \times 100\%$</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Animal</th>
+                            <th>Peso Vivo (kg)</th>
+                            <th>Peso Canal (kg)</th>
+                            <th>Rendimiento (%)</th>
+                            <th>Rendimiento (decimal)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cerdo 1</td>
+                            <td>115.5</td>
+                            <td>89.2</td>
+                            <td><input type="text" id="e10-cerdo1-porcentaje" placeholder="Ej: 77.27"></td>
+                            <td><input type="text" id="e10-cerdo1-decimal" placeholder="Ej: 0.7727"></td>
+                        </tr>
+                        <tr>
+                            <td>Cerdo 2</td>
+                            <td>118.3</td>
+                            <td>92.1</td>
+                            <td><input type="text" id="e10-cerdo2-porcentaje" placeholder="Ej: 77.86"></td>
+                            <td><input type="text" id="e10-cerdo2-decimal" placeholder="Ej: 0.7786"></td>
+                        </tr>
+                        <tr>
+                            <td>Cerdo 3</td>
+                            <td>112.8</td>
+                            <td>87.5</td>
+                            <td><input type="text" id="e10-cerdo3-porcentaje" placeholder="Ej: 77.56"></td>
+                            <td><input type="text" id="e10-cerdo3-decimal" placeholder="Ej: 0.7756"></td>
+                        </tr>
+                        <tr>
+                            <td>Cerdo 4</td>
+                            <td>120.1</td>
+                            <td>93.8</td>
+                            <td><input type="text" id="e10-cerdo4-porcentaje" placeholder="Ej: 78.10"></td>
+                            <td><input type="text" id="e10-cerdo4-decimal" placeholder="Ej: 0.7810"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="e10-promedio">Rendimiento promedio del lote (%):</label>
+                    <input type="text" id="e10-promedio" placeholder="Ej: 77.70">
+                </div>
+                <div class="input-group">
+                    <label for="e10-promedio-fraccion">Rendimiento promedio (fracción):</label>
+                    <input type="text" id="e10-promedio-fraccion" placeholder="Ej: $\frac{777}{1000}$">
+                </div>
+                <div class="input-group">
+                    <label for="e10-alcanzaron">Cerdos que alcanzaron $78\%$:</label>
+                    <input type="text" id="e10-alcanzaron" placeholder="Ej: 1">
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-e10"></div>
+        </div>
+
+        <div class="score-section">
+            <h3>Calificación Final</h3>
+            <p>Puntuación: <span class="score-display" id="total-score">0</span> / 50 puntos</p>
+            <button class="btn btn-success" onclick="checkAnswers()">Calificar Respuestas</button>
+            <button class="btn btn-warning" onclick="showAnswers()">Ver Respuestas Correctas</button>
+            <button class="btn" onclick="resetForm()">Reiniciar</button>
+            <div class="feedback" id="score-feedback"></div>
+        </div>
+
+        <div class="final-reflection">
+            <h3>Importancia de Fracciones y Decimales</h3>
+            <p>Las fracciones y decimales son fundamentales en producción pecuaria para:</p>
+            <ul>
+                <li><strong>Formulación precisa:</strong> Las dietas requieren proporciones exactas de nutrientes</li>
+                <li><strong>Control de calidad:</strong> Los porcentajes permiten evaluar parámetros productivos</li>
+                <li><strong>Dosificación:</strong> Medicamentos y suplementos requieren cálculos exactos</li>
+                <li><strong>Análisis económico:</strong> Los costos y márgenes se expresan en decimales</li>
+                <li><strong>Rendimientos:</strong> Los indicadores productivos usan fracciones y porcentajes</li>
+            </ul>
+            <p>Dominar estas operaciones permite:</p>
+            <ul>
+                <li>Evitar errores costosos en formulaciones</li>
+                <li>Optimizar recursos mediante cálculos precisos</li>
+                <li>Interpretar correctamente análisis de laboratorio</li>
+                <li>Tomar decisiones basadas en datos cuantitativos exactos</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            e1: {
+                maiz: "80",
+                soya: "50", 
+                minerales: "20",
+                otros: "50"
+            },
+            e2: {
+                pastoreo: "4.25",
+                banco: "5.1",
+                heno: "3.4"
+            },
+            e3: {
+                ica: "1.75"
+            },
+            e4: {
+                calcio: "75",
+                fosforo: "40",
+                magnesio: "15", 
+                otros: "370",
+                decimalCalcio: "0.15",
+                decimalFosforo: "0.08",
+                decimalMagnesio: "0.03",
+                sumaFracciones: "1",
+                costoTotal: "1825000"
+            },
+            e5: {
+                mayor: "96",
+                mediano: "80",
+                menor: "64",
+                fraccionMenor: "$\frac{4}{15}$",
+                valorMayor: "273600000",
+                valorMediano: "228000000", 
+                valorMenor: "182400000"
+            },
+            e6: {
+                total: "100",
+                proporcionA: "$\frac{183}{400}$",
+                proporcionB: "$\frac{13}{40}$",
+                proporcionC: "$\frac{87}{400}$",
+                porcentajeA: "45.75",
+                porcentajeB: "32.5",
+                porcentajeC: "21.75",
+                a500: "228.75",
+                b500: "162.5",
+                c500: "108.75"
+            },
+            e7: {
+                total: "130.8",
+                promedio: "18.69",
+                diferencia: "-0.06",
+                ingreso: "176571.40"
+            },
+            e8: {
+                queda: "$\frac{1}{4}$",
+                litros: "300",
+                porcentaje: "$25\%$"
+            },
+            e9: {
+                sal23: "0.5",
+                mezcla12: "33.33",
+                recetas45: "6"
+            },
+            e10: {
+                cerdo1Porcentaje: "77.27",
+                cerdo1Decimal: "0.7727",
+                cerdo2Porcentaje: "77.86", 
+                cerdo2Decimal: "0.7786",
+                cerdo3Porcentaje: "77.56",
+                cerdo3Decimal: "0.7756",
+                cerdo4Porcentaje: "78.10",
+                cerdo4Decimal: "0.7810",
+                promedio: "77.70",
+                promedioFraccion: "$\frac{777}{1000}$",
+                alcanzaron: "1"
+            }
+        };
+
+        function checkAnswers() {
+            let score = 0;
+            const feedback = document.getElementById('score-feedback');
+            feedback.style.display = 'block';
+            feedback.className = 'feedback';
+            
+            // Check Exercise 1
+            const e1Maiz = document.getElementById('e1-maiz').value;
+            const e1Soya = document.getElementById('e1-soya').value;
+            const e1Minerales = document.getElementById('e1-minerales').value;
+            const e1Otros = document.getElementById('e1-otros').value;
+            
+            if (e1Maiz === correctAnswers.e1.maiz && e1Soya === correctAnswers.e1.soya && 
+                e1Minerales === correctAnswers.e1.minerales && e1Otros === correctAnswers.e1.otros) {
+                score += 5;
+                showFeedback('feedback-e1', true);
+            } else {
+                showFeedback('feedback-e1', false);
+            }
+            
+            // Check Exercise 2
+            const e2Pastoreo = document.getElementById('e2-pastoreo').value;
+            const e2Banco = document.getElementById('e2-banco').value;
+            const e2Heno = document.getElementById('e2-heno').value;
+            
+            if (e2Pastoreo === correctAnswers.e2.pastoreo && e2Banco === correctAnswers.e2.banco && 
+                e2Heno === correctAnswers.e2.heno) {
+                score += 5;
+                showFeedback('feedback-e2', true);
+            } else {
+                showFeedback('feedback-e2', false);
+            }
+            
+            // Check Exercise 3
+            const e3Ica = document.getElementById('e3-ica').value;
+            if (e3Ica === correctAnswers.e3.ica) {
+                score += 5;
+                showFeedback('feedback-e3', true);
+            } else {
+                showFeedback('feedback-e3', false);
+            }
+            
+            // Check Exercise 4 (simplified check - just checking some key values)
+            const e4Calcio = document.getElementById('e4-calcio').value;
+            const e4Fosforo = document.getElementById('e4-fosforo').value;
+            const e4Magnesio = document.getElementById('e4-magnesio').value;
+            const e4Otros = document.getElementById('e4-otros').value;
+            const e4DecimalCalcio = document.getElementById('e4-decimal-calcio').value;
+            const e4DecimalFosforo = document.getElementById('e4-decimal-fosforo').value;
+            const e4DecimalMagnesio = document.getElementById('e4-decimal-magnesio').value;
+            const e4Suma = document.getElementById('e4-suma-fracciones').value;
+            const e4Costo = document.getElementById('e4-costo-total').value;
+            
+            if (e4Calcio === correctAnswers.e4.calcio && e4Fosforo === correctAnswers.e4.fosforo && 
+                e4Magnesio === correctAnswers.e4.magnesio && e4Otros === correctAnswers.e4.otros &&
+                e4DecimalCalcio === correctAnswers.e4.decimalCalcio && e4DecimalFosforo === correctAnswers.e4.decimalFosforo &&
+                e4DecimalMagnesio === correctAnswers.e4.decimalMagnesio && e4Suma === correctAnswers.e4.sumaFracciones &&
+                e4Costo === correctAnswers.e4.costoTotal) {
+                score += 5;
+                showFeedback('feedback-e4', true);
+            } else {
+                showFeedback('feedback-e4', false);
+            }
+            
+            // Check Exercise 5
+            const e5Mayor = document.getElementById('e5-mayor').value;
+            const e5Mediano = document.getElementById('e5-mediano').value;
+            const e5Menor = document.getElementById('e5-menor').value;
+            const e5Fraccion = document.getElementById('e5-fraccion-menor').value;
+            const e5ValorMayor = document.getElementById('e5-valor-mayor').value;
+            const e5ValorMediano = document.getElementById('e5-valor-mediano').value;
+            const e5ValorMenor = document.getElementById('e5-valor-menor').value;
+            
+            if (e5Mayor === correctAnswers.e5.mayor && e5Mediano === correctAnswers.e5.mediano && 
+                e5Menor === correctAnswers.e5.menor && e5Fraccion === correctAnswers.e5.fraccionMenor &&
+                e5ValorMayor === correctAnswers.e5.valorMayor && e5ValorMediano === correctAnswers.e5.valorMediano &&
+                e5ValorMenor === correctAnswers.e5.valorMenor) {
+                score += 5;
+                showFeedback('feedback-e5', true);
+            } else {
+                showFeedback('feedback-e5', false);
+            }
+            
+            // Check Exercise 6
+            const e6Total = document.getElementById('e6-total').value;
+            const e6PropA = document.getElementById('e6-proporcion-a').value;
+            const e6PropB = document.getElementById('e6-proporcion-b').value;
+            const e6PropC = document.getElementById('e6-proporcion-c').value;
+            const e6PorcA = document.getElementById('e6-porcentaje-a').value;
+            const e6PorcB = document.getElementById('e6-porcentaje-b').value;
+            const e6PorcC = document.getElementById('e6-porcentaje-c').value;
+            const e6A500 = document.getElementById('e6-a-500').value;
+            const e6B500 = document.getElementById('e6-b-500').value;
+            const e6C500 = document.getElementById('e6-c-500').value;
+            
+            if (e6Total === correctAnswers.e6.total && e6PropA === correctAnswers.e6.proporcionA && 
+                e6PropB === correctAnswers.e6.proporcionB && e6PropC === correctAnswers.e6.proporcionC &&
+                e6PorcA === correctAnswers.e6.porcentajeA && e6PorcB === correctAnswers.e6.porcentajeB &&
+                e6PorcC === correctAnswers.e6.porcentajeC && e6A500 === correctAnswers.e6.a500 &&
+                e6B500 === correctAnswers.e6.b500 && e6C500 === correctAnswers.e6.c500) {
+                score += 5;
+                showFeedback('feedback-e6', true);
+            } else {
+                showFeedback('feedback-e6', false);
+            }
+            
+            // Check Exercise 7
+            const e7Total = document.getElementById('e7-total').value;
+            const e7Promedio = document.getElementById('e7-promedio').value;
+            const e7Diferencia = document.getElementById('e7-diferencia').value;
+            const e7Ingreso = document.getElementById('e7-ingreso').value;
+            
+            if (e7Total === correctAnswers.e7.total && e7Promedio === correctAnswers.e7.promedio && 
+                e7Diferencia === correctAnswers.e7.diferencia && e7Ingreso === correctAnswers.e7.ingreso) {
+                score += 5;
+                showFeedback('feedback-e7', true);
+            } else {
+                showFeedback('feedback-e7', false);
+            }
+            
+            // Check Exercise 8
+            const e8Queda = document.getElementById('e8-queda').value;
+            const e8Litros = document.getElementById('e8-litros').value;
+            const e8Porcentaje = document.getElementById('e8-porcentaje').value;
+            
+            if (e8Queda === correctAnswers.e8.queda && e8Litros === correctAnswers.e8.litros && 
+                e8Porcentaje === correctAnswers.e8.porcentaje) {
+                score += 5;
+                showFeedback('feedback-e8', true);
+            } else {
+                showFeedback('feedback-e8', false);
+            }
+            
+            // Check Exercise 9
+            const e9Sal23 = document.getElementById('e9-sal-2-3').value;
+            const e9Mezcla12 = document.getElementById('e9-mezcla-1-2').value;
+            const e9Recetas45 = document.getElementById('e9-recetas-4-5').value;
+            
+            if (e9Sal23 === correctAnswers.e9.sal23 && e9Mezcla12 === correctAnswers.e9.mezcla12 && 
+                e9Recetas45 === correctAnswers.e9.recetas45) {
+                score += 5;
+                showFeedback('feedback-e9', true);
+            } else {
+                showFeedback('feedback-e9', false);
+            }
+            
+            // Check Exercise 10
+            const e10Cerdo1Porc = document.getElementById('e10-cerdo1-porcentaje').value;
+            const e10Cerdo1Dec = document.getElementById('e10-cerdo1-decimal').value;
+            const e10Cerdo2Porc = document.getElementById('e10-cerdo2-porcentaje').value;
+            const e10Cerdo2Dec = document.getElementById('e10-cerdo2-decimal').value;
+            const e10Cerdo3Porc = document.getElementById('e10-cerdo3-porcentaje').value;
+            const e10Cerdo3Dec = document.getElementById('e10-cerdo3-decimal').value;
+            const e10Cerdo4Porc = document.getElementById('e10-cerdo4-porcentaje').value;
+            const e10Cerdo4Dec = document.getElementById('e10-cerdo4-decimal').value;
+            const e10Promedio = document.getElementById('e10-promedio').value;
+            const e10PromedioFracc = document.getElementById('e10-promedio-fraccion').value;
+            const e10Alcanzaron = document.getElementById('e10-alcanzaron').value;
+            
+            if (e10Cerdo1Porc === correctAnswers.e10.cerdo1Porcentaje && e10Cerdo1Dec === correctAnswers.e10.cerdo1Decimal &&
+                e10Cerdo2Porc === correctAnswers.e10.cerdo2Porcentaje && e10Cerdo2Dec === correctAnswers.e10.cerdo2Decimal &&
+                e10Cerdo3Porc === correctAnswers.e10.cerdo3Porcentaje && e10Cerdo3Dec === correctAnswers.e10.cerdo3Decimal &&
+                e10Cerdo4Porc === correctAnswers.e10.cerdo4Porcentaje && e10Cerdo4Dec === correctAnswers.e10.cerdo4Decimal &&
+                e10Promedio === correctAnswers.e10.promedio && e10PromedioFracc === correctAnswers.e10.promedioFraccion &&
+                e10Alcanzaron === correctAnswers.e10.alcanzaron) {
+                score += 5;
+                showFeedback('feedback-e10', true);
+            } else {
+                showFeedback('feedback-e10', false);
+            }
+            
+            document.getElementById('total-score').textContent = score;
+            
+            if (score === 50) {
+                feedback.textContent = '¡Excelente! Has obtenido la máxima puntuación. Dominas perfectamente los fraccionarios y decimales en contexto pecuario.';
+                feedback.className = 'feedback correct';
+            } else if (score >= 40) {
+                feedback.textContent = `Muy bien! Has obtenido ${score} puntos. Solo quelques errores por corregir.`;
+                feedback.className = 'feedback correct';
+            } else if (score >= 30) {
+                feedback.textContent = `Buen trabajo! Has obtenido ${score} puntos. Sigue practicando para mejorar.`;
+                feedback.className = 'feedback correct';
+            } else if (score >= 20) {
+                feedback.textContent = `Has obtenido ${score} puntos. Necesitas repasar algunos conceptos.`;
+                feedback.className = 'feedback incorrect';
+            } else {
+                feedback.textContent = `Has obtenido ${score} puntos. Te recomiendo revisar el módulo y practicar más.`;
+                feedback.className = 'feedback incorrect';
+            }
+        }
+
+        function showFeedback(elementId, isCorrect) {
+            const feedback = document.getElementById(elementId);
+            feedback.style.display = 'block';
+            if (isCorrect) {
+                feedback.textContent = '✓ Correcto';
+                feedback.className = 'feedback correct';
+            } else {
+                feedback.textContent = '✗ Incorrecto. Revisa tu cálculo.';
+                feedback.className = 'feedback incorrect';
+            }
+        }
+
+        function showAnswers() {
+            // Fill in correct answers
+            document.getElementById('e1-maiz').value = correctAnswers.e1.maiz;
+            document.getElementById('e1-soya').value = correctAnswers.e1.soya;
+            document.getElementById('e1-minerales').value = correctAnswers.e1.minerales;
+            document.getElementById('e1-otros').value = correctAnswers.e1.otros;
+            
+            document.getElementById('e2-pastoreo').value = correctAnswers.e2.pastoreo;
+            document.getElementById('e2-banco').value = correctAnswers.e2.banco;
+            document.getElementById('e2-heno').value = correctAnswers.e2.heno;
+            
+            document.getElementById('e3-ica').value = correctAnswers.e3.ica;
+            
+            document.getElementById('e4-calcio').value = correctAnswers.e4.calcio;
+            document.getElementById('e4-fosforo').value = correctAnswers.e4.fosforo;
+            document.getElementById('e4-magnesio').value = correctAnswers.e4.magnesio;
+            document.getElementById('e4-otros').value = correctAnswers.e4.otros;
+            document.getElementById('e4-decimal-calcio').value = correctAnswers.e4.decimalCalcio;
+            document.getElementById('e4-decimal-fosforo').value = correctAnswers.e4.decimalFosforo;
+            document.getElementById('e4-decimal-magnesio').value = correctAnswers.e4.decimalMagnesio;
+            document.getElementById('e4-suma-fracciones').value = correctAnswers.e4.sumaFracciones;
+            document.getElementById('e4-costo-total').value = correctAnswers.e4.costoTotal;
+            
+            document.getElementById('e5-mayor').value = correctAnswers.e5.mayor;
+            document.getElementById('e5-mediano').value = correctAnswers.e5.mediano;
+            document.getElementById('e5-menor').value = correctAnswers.e5.menor;
+            document.getElementById('e5-fraccion-menor').value = correctAnswers.e5.fraccionMenor;
+            document.getElementById('e5-valor-mayor').value = correctAnswers.e5.valorMayor;
+            document.getElementById('e5-valor-mediano').value = correctAnswers.e5.valorMediano;
+            document.getElementById('e5-valor-menor').value = correctAnswers.e5.valorMenor;
+            
+            document.getElementById('e6-total').value = correctAnswers.e6.total;
+            document.getElementById('e6-proporcion-a').value = correctAnswers.e6.proporcionA;
+            document.getElementById('e6-proporcion-b').value = correctAnswers.e6.proporcionB;
+            document.getElementById('e6-proporcion-c').value = correctAnswers.e6.proporcionC;
+            document.getElementById('e6-porcentaje-a').value = correctAnswers.e6.porcentajeA;
+            document.getElementById('e6-porcentaje-b').value = correctAnswers.e6.porcentajeB;
+            document.getElementById('e6-porcentaje-c').value = correctAnswers.e6.porcentajeC;
+            document.getElementById('e6-a-500').value = correctAnswers.e6.a500;
+            document.getElementById('e6-b-500').value = correctAnswers.e6.b500;
+            document.getElementById('e6-c-500').value = correctAnswers.e6.c500;
+            
+            document.getElementById('e7-total').value = correctAnswers.e7.total;
+            document.getElementById('e7-promedio').value = correctAnswers.e7.promedio;
+            document.getElementById('e7-diferencia').value = correctAnswers.e7.diferencia;
+            document.getElementById('e7-ingreso').value = correctAnswers.e7.ingreso;
+            
+            document.getElementById('e8-queda').value = correctAnswers.e8.queda;
+            document.getElementById('e8-litros').value = correctAnswers.e8.litros;
+            document.getElementById('e8-porcentaje').value = correctAnswers.e8.porcentaje;
+            
+            document.getElementById('e9-sal-2-3').value = correctAnswers.e9.sal23;
+            document.getElementById('e9-mezcla-1-2').value = correctAnswers.e9.mezcla12;
+            document.getElementById('e9-recetas-4-5').value = correctAnswers.e9.recetas45;
+            
+            document.getElementById('e10-cerdo1-porcentaje').value = correctAnswers.e10.cerdo1Porcentaje;
+            document.getElementById('e10-cerdo1-decimal').value = correctAnswers.e10.cerdo1Decimal;
+            document.getElementById('e10-cerdo2-porcentaje').value = correctAnswers.e10.cerdo2Porcentaje;
+            document.getElementById('e10-cerdo2-decimal').value = correctAnswers.e10.cerdo2Decimal;
+            document.getElementById('e10-cerdo3-porcentaje').value = correctAnswers.e10.cerdo3Porcentaje;
+            document.getElementById('e10-cerdo3-decimal').value = correctAnswers.e10.cerdo3Decimal;
+            document.getElementById('e10-cerdo4-porcentaje').value = correctAnswers.e10.cerdo4Porcentaje;
+            document.getElementById('e10-cerdo4-decimal').value = correctAnswers.e10.cerdo4Decimal;
+            document.getElementById('e10-promedio').value = correctAnswers.e10.promedio;
+            document.getElementById('e10-promedio-fraccion').value = correctAnswers.e10.promedioFraccion;
+            document.getElementById('e10-alcanzaron').value = correctAnswers.e10.alcanzaron;
+            
+            // Show all feedback as correct
+            for (let i = 1; i <= 10; i++) {
+                showFeedback(`feedback-e${i}`, true);
+            }
+            
+            document.getElementById('total-score').textContent = '50';
+            const feedback = document.getElementById('score-feedback');
+            feedback.style.display = 'block';
+            feedback.textContent = 'Aquí están las respuestas correctas para que puedas comparar y aprender.';
+            feedback.className = 'feedback correct';
+        }
+
+        function resetForm() {
+            // Clear all inputs
+            const inputs = document.querySelectorAll('input[type="text"]');
+            inputs.forEach(input => input.value = '');
+            
+            // Clear all feedback
+            for (let i = 1; i <= 10; i++) {
+                const feedback = document.getElementById(`feedback-e${i}`);
+                feedback.style.display = 'none';
+            }
+            
+            const scoreFeedback = document.getElementById('score-feedback');
+            scoreFeedback.style.display = 'none';
+            
+            document.getElementById('total-score').textContent = '0';
+        }
+    </script>
+</body>
+</html>
